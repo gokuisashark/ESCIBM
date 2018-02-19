@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Trial_android_sql</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="registration_button">Register</string>
+    <string name="radio_male_registration">Male</string>
+    <string name="radio_female_registration">Female</string>
+    <string name="promptforlogin">Already registered? \n Login here!</string>
+    <string name="Login_page_login_prompt">Login</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="title_activity_profile">ProfileActivity</string>
+</resources>
