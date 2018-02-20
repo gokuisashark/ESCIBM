@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.fish.escpart1.HomePageActivity">
+
+    <Button
+        android:id="@+id/viewaccountbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="View Account Summary"
+        android:layout_centerHorizontal="true"
+        android:ems="16"
+        android:layout_marginTop="100dp"/>
+
+    <Button
+        android:id="@+id/maketransactionbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Make A Transaction"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/viewaccountbutton"
+        android:ems="16"
+        android:layout_marginTop="8dp"/>
+
+    <Button
+        android:id="@+id/opencamerabutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Open Front Camera"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/maketransactionbutton"
+        android:ems="16"
+        android:layout_marginTop="8dp"/>
+
+    <Button
+        android:id="@+id/editdatabutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Edit Your Personal Details"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/opencamerabutton"
+        android:ems="16"
+        android:layout_marginTop="8dp"/>
+
+    <Button
+        android:id="@+id/logoutbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Logout"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/editdatabutton"
+        android:ems="16"
+        android:layout_marginTop="8dp"/>
+    
+
+
+
+
+</RelativeLayout>
