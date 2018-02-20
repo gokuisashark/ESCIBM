@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.fish.escpart1.StartUpActivity">
+
+    <ImageView
+        android:id="@+id/sutdlogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/ibmlogo"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="45dp"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="150dp"
+        android:adjustViewBounds="true"
+        android:maxHeight="100dp"
+        android:maxWidth="150dp"
+        android:scaleType="fitCenter"
+        android:src="@mipmap/sutd_logo_512x" />
+
+
+    <ImageView
+        android:id="@+id/ibmlogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="45dp"
+        android:layout_marginRight="45dp"
+        android:layout_marginTop="150dp"
+        android:adjustViewBounds="true"
+        android:maxHeight="60dp"
+        android:maxWidth="150dp"
+        android:scaleType="fitCenter"
+        android:src="@mipmap/ibm_logo" />
+
+    <TextView
+        android:id="@+id/remotekyctext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Remote KYC"
+        android:textSize="14pt"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/sutdlogo"
+        android:layout_marginTop="20dp"/>
+
+    <EditText
+        android:id="@+id/loginusereditview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:hint="Registered username or email"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/remotekyctext"
+        android:ems="16"/>
+
+    <EditText
+        android:id="@+id/passwordeditview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:hint="Password"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/loginusereditview"
+        android:ems="16"/>
+
+    <Button
+        android:id="@+id/loginbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        android:layout_below="@+id/passwordeditview"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="12dp"
+        android:ems="16"/>
+
+
+    <Button
+        android:id="@+id/registerbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Register"
+        android:layout_below="@+id/loginbutton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp"
+        android:ems="16" />
+
+
+
+</RelativeLayout>
