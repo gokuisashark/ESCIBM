@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //if the user is already logged in we will directly start the profile activity
+        //if loggedin is true. but i haven't done the stupid shared pref thing either...
         if (SharedPrefManager.getInstance(this).isLoggedIn()) {
             finish();
             startActivity(new Intent(this, ProfileActivity.class));
@@ -60,7 +60,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //if user pressed on button register
-                //here we will register the user to server
                 registerUser();
             }
         });
@@ -69,7 +68,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //if user pressed on login
-                //we will open the login screen
                 finish();
                 startActivity(new Intent(MainActivity.this, LoginActivity.class));
             }
