@@ -71,27 +71,26 @@
         android:ems="16"/>
 
     <Button
-        android:id="@+id/registerbutton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Register"
-        android:layout_below="@+id/passwordeditview"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="45dp"
-        android:layout_marginStart="45dp"/>
-
-    <Button
         android:id="@+id/loginbutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Login"
         android:layout_below="@+id/passwordeditview"
-        android:layout_toRightOf="@+id/registerbutton"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="45dp"
-        android:layout_marginEnd="45dp"/>
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="12dp"
+        android:ems="16"/>
+
+
+    <Button
+        android:id="@+id/registerbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Register"
+        android:layout_below="@+id/loginbutton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="8dp"
+        android:ems="16" />
+
 
 
 </RelativeLayout>
