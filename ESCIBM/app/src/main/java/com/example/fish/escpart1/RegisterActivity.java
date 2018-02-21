@@ -1,6 +1,5 @@
 package com.example.fish.escpart1;
 
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -12,7 +11,6 @@ import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.example.fish.sqlJava.ProfileActivity;
 import com.example.fish.sqlJava.RequestHandler;
 import com.example.fish.sqlJava.SharedPrefManager;
 import com.example.fish.sqlJava.URLs;
@@ -133,7 +131,8 @@ public class RegisterActivity extends AppCompatActivity {
 
                     //starting the profile activity
                     finish();
-                    startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
+//                    TODO: Make a Profile Activity and start it after registration
+//                    startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
                 } else {
                     Toast.makeText(getApplicationContext(), "Some error occurred", Toast.LENGTH_SHORT).show();
                 }
