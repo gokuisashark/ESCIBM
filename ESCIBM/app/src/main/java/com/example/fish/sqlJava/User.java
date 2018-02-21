@@ -1,4 +1,4 @@
-package com.example.user.trial_android_sql;
+package com.example.fish.sqlJava;
 
 /**
  * Created by User on 9/2/2018.

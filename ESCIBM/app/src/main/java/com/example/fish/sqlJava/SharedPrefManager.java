@@ -1,7 +1,11 @@
-package com.example.user.trial_android_sql;
+package com.example.fish.sqlJava;
+
 import android.content.Context;
 import android.content.Intent;
-       import android.content.SharedPreferences;
+import android.content.SharedPreferences;
+
+import com.example.fish.escpart1.StartUpActivity;
+
 /**
  * Created by User on 9/2/2018.
  */
@@ -62,6 +66,6 @@ public class SharedPrefManager {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.clear();
         editor.apply();
-        mCtx.startActivity(new Intent(mCtx, LoginActivity.class));
+        mCtx.startActivity(new Intent(mCtx, StartUpActivity.class));
     }
 }

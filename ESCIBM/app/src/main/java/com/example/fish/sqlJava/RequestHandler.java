@@ -1,4 +1,4 @@
-package com.example.user.trial_android_sql;
+package com.example.fish.sqlJava;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.InputStreamReader;
