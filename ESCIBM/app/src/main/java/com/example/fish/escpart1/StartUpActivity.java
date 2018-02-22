@@ -6,6 +6,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -35,6 +36,9 @@ public class StartUpActivity extends AppCompatActivity {
 
         loginbutton = (Button) findViewById(R.id.loginbutton);
         registerbutton = (Button) findViewById(R.id.registerbutton);
+        editTextUsername = findViewById(R.id.loginusereditview);
+        editTextPassword = findViewById(R.id.passwordeditview);
+
 
         loginbutton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,7 +61,6 @@ public class StartUpActivity extends AppCompatActivity {
         //first getting the values
         final String username = editTextUsername.getText().toString();
         final String password = editTextPassword.getText().toString();
-
         //validating inputs
         if (TextUtils.isEmpty(username)) {
             editTextUsername.setError("Please enter your username");
@@ -90,13 +93,29 @@ public class StartUpActivity extends AppCompatActivity {
         }
 
         @Override
+        protected String doInBackground(String... loginInfo) {
+            //creating request handler object
+            RequestHandler requestHandler = new RequestHandler();
+            Log.i("username", loginInfo[0]);
+            Log.i("password", loginInfo[1]);
+
+            //creating request parameters
+            HashMap<String, String> params = new HashMap<>();
+            params.put("username", loginInfo[0]);
+            params.put("password", loginInfo[1]);
+            //returing the response
+            return requestHandler.sendPostRequest(URLs.URL_LOGIN, params);
+        }
+
+        @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
-            progressBar.setVisibility(View.GONE);
+//            progressBar.setVisibility(View.GONE);
 
 
             try {
                 //converting response to json object
+                Log.i("Vincent",s);
                 JSONObject obj = new JSONObject(s);
 
                 //if no error in response
@@ -125,20 +144,6 @@ public class StartUpActivity extends AppCompatActivity {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-        }
-
-        @Override
-        protected String doInBackground(String... loginInfo) {
-            //creating request handler object
-            RequestHandler requestHandler = new RequestHandler();
-
-            //creating request parameters
-            HashMap<String, String> params = new HashMap<>();
-            params.put("username", loginInfo[0]);
-            params.put("password", loginInfo[1]);
-
-            //returing the response
-            return requestHandler.sendPostRequest(URLs.URL_LOGIN, params);
         }
     }
 }

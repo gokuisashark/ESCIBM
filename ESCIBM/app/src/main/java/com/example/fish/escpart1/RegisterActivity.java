@@ -106,7 +106,7 @@ public class RegisterActivity extends AppCompatActivity {
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
             //hiding the progressbar after completion
-            progressBar.setVisibility(View.GONE);
+//            progressBar.setVisibility(View.GONE);
 
             try {
                 //converting response to json object

@@ -66,6 +66,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:hint="Password"
+        android:inputType="textPassword"
         android:layout_marginTop="20dp"
         android:layout_below="@+id/loginusereditview"
         android:ems="16"/>
