@@ -36,7 +36,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/designationText"
-            android:layout_alignBottom="@+id/designationText"></Spinner>
+            android:layout_alignBottom="@+id/designationText"/>
 
         <TextView
             android:id="@+id/genderText"
@@ -54,7 +54,7 @@
             android:layout_height="wrap_content"
             android:layout_toRightOf="@id/genderText"
             android:layout_alignBottom="@+id/genderText"
-            ></Spinner>
+            />
 
         <TextView
             android:id="@+id/firstNameText"
@@ -73,7 +73,7 @@
             android:hint="First name here"
             android:ems="12"
             android:layout_toRightOf="@+id/firstNameText"
-            android:layout_alignBottom="@+id/firstNameText"/>
+            android:layout_alignBaseline="@+id/firstNameText"/>
 
         <TextView
             android:id="@+id/lastNameText"
@@ -92,7 +92,7 @@
             android:hint="Last name here"
             android:ems="12"
             android:layout_toRightOf="@+id/lastNameText"
-            android:layout_alignBottom="@+id/lastNameText"/>
+            android:layout_alignBaseline="@+id/lastNameText"/>
 
         <TextView
             android:id="@+id/nricfinText"
@@ -111,7 +111,7 @@
             android:hint="NRIC/FIN"
             android:ems="9"
             android:layout_toRightOf="@id/nricfinText"
-            android:layout_alignBottom="@id/nricfinText"/>
+            android:layout_alignBaseline="@id/nricfinText"/>
 
         <TextView
             android:id="@+id/dobText"
@@ -131,7 +131,27 @@
             android:inputType="date"
             android:ems="11"
             android:layout_toRightOf="@id/dobText"
-            android:layout_alignBottom="@id/dobText"/>
+            android:layout_alignBaseline="@id/dobText"/>
+
+        <TextView
+            android:id="@+id/nationalityText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nationality: "
+            android:textSize="18sp"
+            android:layout_below="@id/dobText"
+            android:layout_alignLeft="@id/dobText"
+            android:layout_marginTop="16dp" />
+
+        <EditText
+            android:id="@+id/nationalityEditView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Nationality"
+            android:inputType="date"
+            android:ems="11"
+            android:layout_toRightOf="@id/nationalityText"
+            android:layout_alignBaseline="@id/nationalityText"/>
 
         <TextView
             android:id="@+id/homeAddressText"
@@ -139,8 +159,8 @@
             android:layout_height="wrap_content"
             android:text="Home Address: "
             android:textSize="18sp"
-            android:layout_below="@id/dobText"
-            android:layout_alignLeft="@id/dobText"
+            android:layout_below="@id/nationalityText"
+            android:layout_alignLeft="@id/nationalityText"
             android:layout_marginTop="16dp" />
 
         <EditText
@@ -151,8 +171,8 @@
             android:inputType="textMultiLine"
             android:minLines="1"
             android:lines="2"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
+            android:layout_alignLeft="@id/homeAddressText"
+            android:layout_alignStart="@+id/homeAddressText"
             android:layout_below="@+id/homeAddressText" />
 
         <TextView
@@ -173,7 +193,7 @@
             android:inputType="textPostalAddress"
             android:ems="11"
             android:layout_toRightOf="@id/postalCodeText"
-            android:layout_alignBottom="@id/postalCodeText"/>
+            android:layout_alignBaseline="@id/postalCodeText"/>
 
         <TextView
             android:id="@+id/contactNumberText"
@@ -193,7 +213,7 @@
             android:inputType="phone"
             android:ems="11"
             android:layout_toRightOf="@id/contactNumberText"
-            android:layout_alignBottom="@id/contactNumberText"/>
+            android:layout_alignBaseline="@id/contactNumberText"/>
 
         <TextView
             android:id="@+id/emailText"
@@ -213,7 +233,7 @@
             android:hint="Personal email"
             android:ems="14"
             android:layout_toRightOf="@id/emailText"
-            android:layout_alignBottom="@id/emailText"/>
+            android:layout_alignBaseline="@id/emailText"/>
 
         <TextView
             android:id="@+id/passwordText"
@@ -229,11 +249,11 @@
             android:id="@+id/passwordEditView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="password"
+            android:hint="Enter Password"
             android:inputType="textPassword"
             android:ems="11"
             android:layout_toRightOf="@id/passwordText"
-            android:layout_alignBottom="@id/passwordText"/>
+            android:layout_alignBaseline="@id/passwordText"/>
 
         <TextView
             android:id="@+id/verifyPasswordText"
@@ -249,11 +269,11 @@
             android:id="@+id/verifyPasswordEditView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="verify password"
+            android:hint="Verify Password"
             android:inputType="textPassword"
             android:ems="11"
             android:layout_toRightOf="@id/verifyPasswordText"
-            android:layout_alignBottom="@id/verifyPasswordText"/>
+            android:layout_alignBaseline="@id/verifyPasswordText"/>
 
         <Button
             android:id="@+id/registerSaveButton"
@@ -263,6 +283,7 @@
             android:textStyle="bold"
             android:textSize="16sp"
             android:layout_below="@id/verifyPasswordText"
+            android:layout_marginBottom="16dp"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="20dp"/>
 
