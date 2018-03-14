@@ -3,6 +3,7 @@ package com.example.fish.escpart1;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -27,18 +28,17 @@ public class RegisterActivity extends AppCompatActivity {
     String[] genders_array = {"M", "F", "Others"};
     Spinner designationSpinner, genderSpinner;
     EditText firstNameEditText, lastNameEditText, nricEditText, dobEditText,
-            homeAddressEditText, postalCodeEditText, contactNumberEditText, emailEditText, accountNumberEditText;
-    //TODO: add passwordEditText
-    String password;
+            homeAddressEditText, postalCodeEditText, contactNumberEditText, emailEditText, passwordEditText, verifyPasswordEditText;
+    String password, verifyPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
+        Button saveregistrationdetailsbutton = (Button) findViewById(R.id.registerSaveButton);
         designationSpinner = (Spinner) findViewById(R.id.designationSpinner);
         genderSpinner = (Spinner) findViewById(R.id.genderSpinner);
-        Button saveregistrationdetailsbutton = (Button) findViewById(R.id.registerSaveButton);
 
         ArrayAdapter<String> designationSpinnerAdapter = new ArrayAdapter<String>
                 (this, android.R.layout.simple_spinner_item, designation_array);
@@ -48,24 +48,45 @@ public class RegisterActivity extends AppCompatActivity {
         ArrayAdapter<String> genderSpinnerAdapter = new ArrayAdapter<String>
                 (this, android.R.layout.simple_spinner_item, genders_array);
         genderSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        genderSpinner.setAdapter(genderSpinnerAdapter);
 
         firstNameEditText = findViewById(R.id.firstNameEditView);
         lastNameEditText = findViewById(R.id.lastNameEditView);
+        nricEditText = findViewById(R.id.nricfinEditView);
+        dobEditText = findViewById(R.id.dobEditView);
+        homeAddressEditText = findViewById(R.id.homeAddressEditView);
+        postalCodeEditText = findViewById(R.id.postalCodeEditView);
+        contactNumberEditText = findViewById(R.id.contactNumberEditView);
         emailEditText = findViewById(R.id.emailEditView);
-        password = "password"; //placeholder
 
-
+        genderSpinner.setAdapter(genderSpinnerAdapter);
+        passwordEditText = findViewById(R.id.passwordEditView);
+        verifyPasswordEditText = findViewById(R.id.verifyPasswordEditView);
 
         saveregistrationdetailsbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 HashMap<String,String> params = new HashMap<>();
-                params.put("designation", designationSpinner.getSelectedItem().toString());
-                params.put("gender",genderSpinner.getSelectedItem().toString());
-                params.put("name", firstNameEditText.getText().toString() + " " + lastNameEditText.getText().toString());
+                password = passwordEditText.getText().toString();
+                verifyPassword = verifyPasswordEditText.getText().toString();
+                if (!verifyPassword(password, verifyPassword)){
+                    return;
+                }
+                params.put("username", emailEditText.getText().toString());
+                params.put("firstname", firstNameEditText.getText().toString());
+                params.put("lastname", lastNameEditText.getText().toString());
+                params.put("NRIC", nricEditText.getText().toString());
+                params.put("DOB", dobEditText.getText().toString());
+                params.put("Address", homeAddressEditText.getText().toString());
+                params.put("postalcode", postalCodeEditText.getText().toString());
+                params.put("contact", contactNumberEditText.getText().toString());
                 params.put("email", emailEditText.getText().toString());
+                params.put("accountnumber", "1234"); //TODO: make this autoincrement in server
+//                params.put("", designationSpinner.getSelectedItem().toString());
+                params.put("amount", "0"); //TODO: make this initialised to zero in server
+                params.put("gender",genderSpinner.getSelectedItem().toString());
                 params.put("password", password);
+
+
                 RegisterUser ru = new RegisterUser();
                 ru.execute(params);
                 Toast.makeText(RegisterActivity.this, "Details saved", Toast.LENGTH_SHORT).show();
@@ -73,6 +94,15 @@ public class RegisterActivity extends AppCompatActivity {
         });
 
 
+    }
+    boolean verifyPassword(String password, String verifyPassword) {
+        if (!password.equals(verifyPassword)){
+            return false;
+        } else if (password.length() < 8) {
+            Toast.makeText(this.getApplicationContext(), "Password must be longer than 8 characters long", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
     }
     class RegisterUser extends AsyncTask<HashMap<String,String>, Void, String> {
 
@@ -83,15 +113,8 @@ public class RegisterActivity extends AppCompatActivity {
             //creating request handler object
             RequestHandler requestHandler = new RequestHandler();
 
-            //creating request parameters
-            HashMap<String, String> params = new HashMap<>();
-            params.put("username",inputParams[0].get("name"));
-            params.put("email", inputParams[0].get("password"));
-            params.put("password", inputParams[0].get("password"));
-            params.put("gender", inputParams[0].get("gender"));
-
-            //returing the response
-            return requestHandler.sendPostRequest(URLs.URL_REGISTER, params);
+            //returning the response
+            return requestHandler.sendPostRequest(URLs.URL_REGISTER, inputParams[0]);
         }
 
         @Override
@@ -111,7 +134,7 @@ public class RegisterActivity extends AppCompatActivity {
             try {
                 //converting response to json object
                 JSONObject obj = new JSONObject(s);
-
+                Log.i("Register",s);
                 //if no error in response
                 if (!obj.getBoolean("error")) {
                     Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_SHORT).show();

@@ -54,10 +54,10 @@ npFace_descriptor2 = np.array([p for p in face_descriptor2])
 
 euclideanDistance = np.linalg.norm(npFace_descriptor1 - npFace_descriptor2, axis=0)
 print("Euclidean Distance: {:f}".format(euclideanDistance))
-if (euclideanDistance < 0.6):
-	print("MATCH")
+if (euclideanDistance < 0.45):
+	print("TRUE")
 else:
-	print("NOT MATCH")
+	print("FALSE")
 endTime = time.time()
 print("Time elapsed: {:f}".format(endTime - startTime))
 
