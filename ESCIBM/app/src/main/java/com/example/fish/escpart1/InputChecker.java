@@ -21,7 +21,7 @@ public class InputChecker {
 
     public InputChecker(Context context) {
         this.context = context;
-        this.success = false;
+        this.success = true;
     }
 
     public ArrayList<String> check(HashMap<String, String> inputFields) {

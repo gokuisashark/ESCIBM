@@ -18,16 +18,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".HomePageActivity" />
+        <activity android:name=".HomePageActivity" android:parentActivityName=".StartUpActivity"/>
+        <activity android:name=".ProfileActivity" android:parentActivityName=".HomePageActivity"/>
+        <activity android:name=".PlaceholderActivity" android:parentActivityName=".HomePageActivity"/>
         <activity android:name=".ViewAccountSummaryActivity" />
         <activity android:name=".EditDataActivity" />
         <activity android:name=".MakeTransactionActivity" />
-        <activity
-            android:name=".CameraActivity"
-            android:parentActivityName=".RegisterActivity">
-        </activity>
-        <activity android:name=".RegisterActivity"
-            android:parentActivityName=".RegisterActivity"></activity>
+        <activity android:name=".CameraActivity" android:parentActivityName=".RegisterActivity"/>
+        <activity android:name=".RegisterActivity" android:parentActivityName=".StartUpActivity"/>
     </application>
 
 </manifest>

@@ -1,6 +1,7 @@
 package com.example.fish.escpart1;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.ProgressBar;
@@ -79,6 +80,9 @@ class RegisterUser extends AsyncTask<HashMap<String,String>, Void, String> {
 
                 //storing the user in shared preferences
                 SharedPrefManager.getInstance(this.context).userLogin(user);
+                Intent intent = new Intent(context, StartUpActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(intent);
 
                 //starting the profile activity
 //                finish();

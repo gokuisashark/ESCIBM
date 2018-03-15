@@ -88,6 +88,7 @@ class UserLogin extends AsyncTask<HashMap<String,String>, Void, String> {
                 //starting the profile activity
 //                finish();
                 Intent intent = new Intent(context, HomePageActivity.class);
+                intent.putExtra("jsonString", jsonString);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(intent);
             } else {
