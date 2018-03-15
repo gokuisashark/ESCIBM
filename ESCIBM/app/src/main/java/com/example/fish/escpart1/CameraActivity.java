@@ -25,7 +25,7 @@ public class CameraActivity extends AppCompatActivity {
     private int CAMERA_PERMISSION_REQUEST = 5050; //integer to tell me i did a permissions activity for the camera
     private HashMap<String,String> params;
     private Button registerButton, takePictureButton;
-    private String encodedCamera;
+    private String encodedImage;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,7 +47,7 @@ public class CameraActivity extends AppCompatActivity {
 
             @SuppressWarnings("unchecked")
             public void onClick(View view) {
-                params.put("face", encodedCamera);
+                params.put("face", encodedImage);
                 RegisterUser ru = new RegisterUser(getApplicationContext());
                 for (String i: params.keySet()) {
                     System.out.println(i + params.get(i));
@@ -82,7 +82,7 @@ public class CameraActivity extends AppCompatActivity {
             ByteArrayOutputStream bytes = new ByteArrayOutputStream(); //need this.
             item.compress(Bitmap.CompressFormat.JPEG, 100, bytes); //into bytes.
             byte[] imagebytes_camera = bytes.toByteArray();
-            encodedCamera = Base64.encodeToString(imagebytes_camera, Base64.DEFAULT);
+            encodedImage = Base64.encodeToString(imagebytes_camera, Base64.DEFAULT);
             this.imageTaken.setImageBitmap(item);
             System.out.println("asd");
             registerButton.setVisibility(View.VISIBLE);

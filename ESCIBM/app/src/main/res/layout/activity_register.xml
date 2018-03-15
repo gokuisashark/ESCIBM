@@ -148,7 +148,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="Nationality"
-            android:inputType="date"
             android:ems="11"
             android:layout_toRightOf="@id/nationalityText"
             android:layout_alignBaseline="@id/nationalityText"/>

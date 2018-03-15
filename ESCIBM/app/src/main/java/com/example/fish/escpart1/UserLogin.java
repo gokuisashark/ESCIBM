@@ -1,15 +1,14 @@
 package com.example.fish.escpart1;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.fish.sqlJava.RequestHandler;
-import com.example.fish.sqlJava.SharedPrefManager;
 import com.example.fish.sqlJava.URLs;
-import com.example.fish.sqlJava.User;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -20,10 +19,10 @@ import java.util.HashMap;
  * Created by setia on 3/15/2018.
  */
 
-class UserLogin extends AsyncTask<String, Void, String> {
+class UserLogin extends AsyncTask<HashMap<String,String>, Void, String> {
 
-    ProgressBar progressBar;
-    Context context;
+    private ProgressBar progressBar;
+    private Context context;
 
     UserLogin(Context context) {
         this.context = context;
@@ -43,53 +42,56 @@ class UserLogin extends AsyncTask<String, Void, String> {
     }
 
     @Override
-    protected String doInBackground(String... loginInfo) {
+    protected String doInBackground(HashMap<String,String>...params) {
         //creating request handler object
         RequestHandler requestHandler = new RequestHandler();
-        Log.i("username", loginInfo[0]);
-        Log.i("password", loginInfo[1]);
+        Log.i("username", params[0].get("username"));
+        Log.i("password", params[0].get("password"));
 
         //creating request parameters
-        HashMap<String, String> params = new HashMap<>();
-        params.put("username", loginInfo[0]);
-        params.put("password", loginInfo[1]);
         //returing the response
-        return requestHandler.sendPostRequest(URLs.URL_LOGIN, params);
+        return requestHandler.sendPostRequest(URLs.URL_LOGIN, params[0]);
     }
 
     @Override
-    protected void onPostExecute(String s) {
-        super.onPostExecute(s);
+    protected void onPostExecute(String jsonString) {
+        super.onPostExecute(jsonString);
 //            progressBar.setVisibility(View.GONE);
 
 
         try {
             //converting response to json object
-            Log.i("Vincent",s);
-            JSONObject obj = new JSONObject(s);
+            Log.i("jsonString",jsonString);
+            JSONObject obj = new JSONObject(jsonString);
 
             //if no error in response
             if (!obj.getBoolean("error")) {
-                Toast.makeText(context, obj.getString("message"), Toast.LENGTH_SHORT).show();
+                String message = obj.getString("message");
+                Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
+                if (message.equals("Invalid username or password or bad face")){
+                    return;
+                }
 
                 //getting the user from the response
-                JSONObject userJson = obj.getJSONObject("user");
+//                JSONObject userJson = obj.getJSONObject("user");
 
                 //creating a new user object
-                User user = new User(
-                        userJson.getString("username"),
-                        userJson.getString("email"),
-                        userJson.getString("gender")
-                );
+//                User user = new User(
+//                        userJson.getString("username"),
+//                        userJson.getString("email"),
+//                        userJson.getString("gender")
+//                );
 
                 //storing the user in shared preferences
-                SharedPrefManager.getInstance(context).userLogin(user);
+//                SharedPrefManager.getInstance(context).userLogin(user);
 
                 //starting the profile activity
 //                finish();
-//                startActivity(new Intent(context, HomePageActivity.class));
+                Intent intent = new Intent(context, HomePageActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(intent);
             } else {
-                Toast.makeText(context, "Invalid username or password", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "Invalid username, password or face", Toast.LENGTH_SHORT).show();
             }
         } catch (JSONException e) {
             e.printStackTrace();
