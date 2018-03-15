@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class RegisterActivity extends AppCompatActivity {
@@ -56,12 +57,31 @@ public class RegisterActivity extends AppCompatActivity {
         saveregistrationdetailsbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                HashMap<String,String> params = new HashMap<>();
-                password = passwordEditText.getText().toString().trim();
-                verifyPassword = verifyPasswordEditText.getText().toString();
-                if (!verifyPassword(password, verifyPassword)){
+
+                InputChecker ic = new InputChecker(getApplicationContext());
+                HashMap<String,String> inputFields = new HashMap<>();
+                ArrayList<String> warnings = new ArrayList<>();
+
+                inputFields.put("postalcode", postalCodeEditText.getText().toString().trim());
+                inputFields.put("nric", nricEditText.getText().toString().trim());
+                inputFields.put("contact", contactNumberEditText.getText().toString().trim());
+                inputFields.put("email", emailEditText.getText().toString().trim());
+                inputFields.put("password", passwordEditText.getText().toString().trim());
+                inputFields.put("verifyPassword", verifyPasswordEditText.getText().toString().trim());
+                warnings = ic.check(inputFields);
+                if(!ic.isSuccess()){
+                    for (String warning: warnings) {
+                        Toast.makeText(getApplicationContext(), warning, Toast.LENGTH_SHORT).show();
+                    }
                     return;
                 }
+
+                password = passwordEditText.getText().toString().trim();
+                verifyPassword = verifyPasswordEditText.getText().toString();
+                HashMap<String,String> params = new HashMap<>();
+
+
+
                 params.put("username", emailEditText.getText().toString().trim());
                 params.put("firstname", firstNameEditText.getText().toString().trim());
                 params.put("lastname", lastNameEditText.getText().toString().trim());
@@ -87,13 +107,5 @@ public class RegisterActivity extends AppCompatActivity {
 
 
     }
-    boolean verifyPassword(String password, String verifyPassword) {
-        if (!password.equals(verifyPassword)){
-            return false;
-        } else if (password.length() < 8) {
-            Toast.makeText(this.getApplicationContext(), "Password must be longer than 8 characters long", Toast.LENGTH_SHORT).show();
-            return false;
-        }
-        return true;
-    }
+
 }
