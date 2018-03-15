@@ -1,242 +1,292 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.fish.escpart1.RegisterActivity">
 
-    <TextView
-        android:id="@+id/registerText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:textSize="24sp"
-        android:text="Register"
-        android:textStyle="bold"
-        android:layout_centerHorizontal="true"
-        />
-
-    <TextView
-        android:id="@+id/designationText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Designation: "
-        android:textSize="18sp"
-        android:layout_below="@+id/registerText"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="20dp"/>
-
-    <Spinner
-        android:id="@+id/designationSpinner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/designationText"
-        android:layout_alignBottom="@+id/designationText"></Spinner>
-
-    <TextView
-        android:id="@+id/genderText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Gender: "
-        android:textSize="18sp"
-        android:layout_toRightOf="@id/designationSpinner"
-        android:layout_marginLeft="8dp"
-        android:layout_alignBottom="@id/designationSpinner"/>
-
-    <Spinner
-        android:id="@+id/genderSpinner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/genderText"
-        android:layout_alignBottom="@+id/genderText"
-        ></Spinner>
-
-    <TextView
-        android:id="@+id/firstNameText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="First Name: "
-        android:textSize="18sp"
-        android:layout_below="@+id/designationText"
-        android:layout_alignLeft="@+id/designationText"
-        android:layout_marginTop="16dp"/>
-
-    <EditText
-        android:id="@+id/firstNameEditView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="First name here"
-        android:ems="12"
-        android:layout_toRightOf="@+id/firstNameText"
-        android:layout_alignBottom="@+id/firstNameText"/>
-
-    <TextView
-        android:id="@+id/lastNameText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Last Name: "
-        android:textSize="18sp"
-        android:layout_below="@+id/firstNameText"
-        android:layout_alignLeft="@id/firstNameText"
-        android:layout_marginTop="16dp"/>
-
-    <EditText
-        android:id="@+id/lastNameEditView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="Last name here"
-        android:ems="12"
-        android:layout_toRightOf="@+id/lastNameText"
-        android:layout_alignBottom="@+id/lastNameText"/>
-
-    <TextView
-        android:id="@+id/nricfinText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="NRIC/FIN Number: "
-        android:textSize="18sp"
-        android:layout_below="@id/lastNameText"
-        android:layout_alignLeft="@id/lastNameText"
-        android:layout_marginTop="16dp" />
-
-    <EditText
-        android:id="@+id/nricfinEditView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="NRIC/FIN"
-        android:ems="9"
-        android:layout_toRightOf="@id/nricfinText"
-        android:layout_alignBottom="@id/nricfinText"/>
-
-    <TextView
-        android:id="@+id/dobText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Date of Birth: "
-        android:textSize="18sp"
-        android:layout_below="@id/nricfinText"
-        android:layout_alignLeft="@id/nricfinText"
-        android:layout_marginTop="16dp" />
-
-    <EditText
-        android:id="@+id/dobEditView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="Date of Birth"
-        android:ems="11"
-        android:layout_toRightOf="@id/dobText"
-        android:layout_alignBottom="@id/dobText"/>
-
-    <TextView
-        android:id="@+id/homeAddressText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Home Address: "
-        android:textSize="18sp"
-        android:layout_below="@id/dobText"
-        android:layout_alignLeft="@id/dobText"
-        android:layout_marginTop="16dp" />
-
-    <EditText
-        android:id="@+id/homeAddressEditView"
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Home Address"
-        android:inputType="textMultiLine"
-        android:minLines="1"
-        android:lines="2"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_below="@+id/homeAddressText" />
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/postalCodeText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Postal Code: "
-        android:textSize="18sp"
-        android:layout_below="@id/homeAddressEditView"
-        android:layout_alignLeft="@id/homeAddressEditView"
-        android:layout_marginTop="16dp" />
+        <TextView
+            android:id="@+id/registerText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:textSize="24sp"
+            android:text="Register"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"
+            />
 
-    <EditText
-        android:id="@+id/postalCodeEditView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="Postal Code"
-        android:ems="11"
-        android:layout_toRightOf="@id/postalCodeText"
-        android:layout_alignBottom="@id/postalCodeText"/>
+        <TextView
+            android:id="@+id/designationText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Designation: "
+            android:textSize="18sp"
+            android:layout_below="@+id/registerText"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"/>
 
-    <TextView
-        android:id="@+id/contactNumberText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Contact Number: "
-        android:textSize="18sp"
-        android:layout_below="@id/postalCodeText"
-        android:layout_alignLeft="@id/postalCodeText"
-        android:layout_marginTop="16dp" />
+        <Spinner
+            android:id="@+id/designationSpinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/designationText"
+            android:layout_alignBottom="@+id/designationText"/>
 
-    <EditText
-        android:id="@+id/contactNumberEditView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="Personal Phone Number"
-        android:ems="11"
-        android:layout_toRightOf="@id/contactNumberText"
-        android:layout_alignBottom="@id/contactNumberText"/>
+        <TextView
+            android:id="@+id/genderText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gender: "
+            android:textSize="18sp"
+            android:layout_toRightOf="@id/designationSpinner"
+            android:layout_marginLeft="8dp"
+            android:layout_alignBottom="@id/designationSpinner"/>
 
-    <TextView
-        android:id="@+id/emailText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Email: "
-        android:textSize="18sp"
-        android:layout_below="@id/contactNumberText"
-        android:layout_alignLeft="@id/contactNumberText"
-        android:layout_marginTop="16dp" />
+        <Spinner
+            android:id="@+id/genderSpinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/genderText"
+            android:layout_alignBottom="@+id/genderText"
+            />
 
-    <EditText
-        android:id="@+id/emailEditView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="Personal email"
-        android:ems="14"
-        android:layout_toRightOf="@id/emailText"
-        android:layout_alignBottom="@id/emailText"/>
+        <TextView
+            android:id="@+id/firstNameText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="First Name: "
+            android:textSize="18sp"
+            android:layout_below="@+id/designationText"
+            android:layout_alignLeft="@+id/designationText"
+            android:layout_marginTop="16dp"/>
+
+        <EditText
+            android:id="@+id/firstNameEditView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="First name here"
+            android:ems="12"
+            android:layout_toRightOf="@+id/firstNameText"
+            android:layout_alignBaseline="@+id/firstNameText"/>
+
+        <TextView
+            android:id="@+id/lastNameText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Last Name: "
+            android:textSize="18sp"
+            android:layout_below="@+id/firstNameText"
+            android:layout_alignLeft="@id/firstNameText"
+            android:layout_marginTop="16dp"/>
+
+        <EditText
+            android:id="@+id/lastNameEditView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Last name here"
+            android:ems="12"
+            android:layout_toRightOf="@+id/lastNameText"
+            android:layout_alignBaseline="@+id/lastNameText"/>
+
+        <TextView
+            android:id="@+id/nricfinText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="NRIC/FIN Number: "
+            android:textSize="18sp"
+            android:layout_below="@id/lastNameText"
+            android:layout_alignLeft="@id/lastNameText"
+            android:layout_marginTop="16dp" />
+
+        <EditText
+            android:id="@+id/nricfinEditView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="NRIC/FIN"
+            android:ems="9"
+            android:layout_toRightOf="@id/nricfinText"
+            android:layout_alignBaseline="@id/nricfinText"/>
+
+        <TextView
+            android:id="@+id/dobText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Date of Birth: "
+            android:textSize="18sp"
+            android:layout_below="@id/nricfinText"
+            android:layout_alignLeft="@id/nricfinText"
+            android:layout_marginTop="16dp" />
+
+        <EditText
+            android:id="@+id/dobEditView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Date of Birth"
+            android:inputType="date"
+            android:ems="11"
+            android:layout_toRightOf="@id/dobText"
+            android:layout_alignBaseline="@id/dobText"/>
+
+        <TextView
+            android:id="@+id/nationalityText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nationality: "
+            android:textSize="18sp"
+            android:layout_below="@id/dobText"
+            android:layout_alignLeft="@id/dobText"
+            android:layout_marginTop="16dp" />
+
+        <EditText
+            android:id="@+id/nationalityEditView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Nationality"
+            android:inputType="date"
+            android:ems="11"
+            android:layout_toRightOf="@id/nationalityText"
+            android:layout_alignBaseline="@id/nationalityText"/>
+
+        <TextView
+            android:id="@+id/homeAddressText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Home Address: "
+            android:textSize="18sp"
+            android:layout_below="@id/nationalityText"
+            android:layout_alignLeft="@id/nationalityText"
+            android:layout_marginTop="16dp" />
+
+        <EditText
+            android:id="@+id/homeAddressEditView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Home Address"
+            android:inputType="textMultiLine"
+            android:minLines="1"
+            android:lines="2"
+            android:layout_alignLeft="@id/homeAddressText"
+            android:layout_alignStart="@+id/homeAddressText"
+            android:layout_below="@+id/homeAddressText" />
+
+        <TextView
+            android:id="@+id/postalCodeText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Postal Code: "
+            android:textSize="18sp"
+            android:layout_below="@id/homeAddressEditView"
+            android:layout_alignLeft="@id/homeAddressEditView"
+            android:layout_marginTop="16dp" />
+
+        <EditText
+            android:id="@+id/postalCodeEditView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Postal Code"
+            android:inputType="textPostalAddress"
+            android:ems="11"
+            android:layout_toRightOf="@id/postalCodeText"
+            android:layout_alignBaseline="@id/postalCodeText"/>
+
+        <TextView
+            android:id="@+id/contactNumberText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Contact Number: "
+            android:textSize="18sp"
+            android:layout_below="@id/postalCodeText"
+            android:layout_alignLeft="@id/postalCodeText"
+            android:layout_marginTop="16dp" />
+
+        <EditText
+            android:id="@+id/contactNumberEditView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Personal Phone Number"
+            android:inputType="phone"
+            android:ems="11"
+            android:layout_toRightOf="@id/contactNumberText"
+            android:layout_alignBaseline="@id/contactNumberText"/>
+
+        <TextView
+            android:id="@+id/emailText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Email: "
+            android:textSize="18sp"
+            android:layout_below="@id/contactNumberText"
+            android:layout_alignLeft="@id/contactNumberText"
+            android:layout_marginTop="16dp" />
+
+        <EditText
+            android:id="@+id/emailEditView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:hint="Personal email"
+            android:ems="14"
+            android:layout_toRightOf="@id/emailText"
+            android:layout_alignBaseline="@id/emailText"/>
+
+        <TextView
+            android:id="@+id/passwordText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Password: "
+            android:textSize="18sp"
+            android:layout_below="@id/emailText"
+            android:layout_alignLeft="@id/emailText"
+            android:layout_marginTop="16dp" />
+
+        <EditText
+            android:id="@+id/passwordEditView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Enter Password"
+            android:inputType="textPassword"
+            android:ems="11"
+            android:layout_toRightOf="@id/passwordText"
+            android:layout_alignBaseline="@id/passwordText"/>
+
+        <TextView
+            android:id="@+id/verifyPasswordText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Verify Password: "
+            android:textSize="18sp"
+            android:layout_below="@id/passwordText"
+            android:layout_alignLeft="@id/passwordText"
+            android:layout_marginTop="16dp" />
+
+        <EditText
+            android:id="@+id/verifyPasswordEditView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Verify Password"
+            android:inputType="textPassword"
+            android:ems="11"
+            android:layout_toRightOf="@id/verifyPasswordText"
+            android:layout_alignBaseline="@id/verifyPasswordText"/>
+
+        <Button
+            android:id="@+id/registerSaveButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Save Registration Details"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:layout_below="@id/verifyPasswordText"
+            android:layout_marginBottom="16dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"/>
 
 
-    <TextView
-        android:id="@+id/accountNumberText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Account Number: "
-        android:textSize="18sp"
-        android:layout_below="@id/emailText"
-        android:layout_alignLeft="@id/emailText"
-        android:layout_marginTop="16dp" />
-
-    <EditText
-        android:id="@+id/accountNumberEditView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="Bank Account Number"
-        android:ems="11"
-        android:layout_toRightOf="@id/accountNumberText"
-        android:layout_alignBottom="@id/accountNumberText"/>
-
-    <Button
-        android:id="@+id/registerSaveButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Save Registration Details"
-        android:textStyle="bold"
-        android:textSize="16sp"
-        android:layout_below="@id/accountNumberText"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"/>
-
-
-</RelativeLayout>
+    </RelativeLayout>
+</ScrollView>

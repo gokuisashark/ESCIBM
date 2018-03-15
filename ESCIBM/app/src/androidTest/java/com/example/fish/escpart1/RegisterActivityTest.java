@@ -1,6 +1,7 @@
 package com.example.fish.escpart1;
 
 import android.support.test.rule.ActivityTestRule;
+import android.test.ActivityInstrumentationTestCase2;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -18,35 +19,50 @@ import static org.junit.Assert.*;
 /**
  * Created by Li Xueqing on 15/3/2018.
  */
-public class RegisterActivityTest {
-    @Rule
-    public ActivityTestRule<RegisterActivity> mActivityTestRule =
-            new ActivityTestRule<RegisterActivity>(RegisterActivity.class);
-
+public class RegisterActivityTest extends ActivityInstrumentationTestCase2<RegisterActivity> {
     private RegisterActivity mActivity = null;
+    private EditText emailView;
+
+
+    public RegisterActivityTest() {
+        super("com.example.fish.RegisterActivity",RegisterActivity.class);
+    }
 
     @Before
     public void setUp() throws Exception {
-        mActivity = mActivityTestRule.getActivity();
+        super.setUp();
+        mActivity = this.getActivity();
+
+        emailView = mActivity.findViewById(R.id.emailEditView);
+        //Button saveRegistrationButton = (Button) mActivity.findViewById(R.id.registerSaveButton);
     }
 
-    @Test
+    public void testPreconditions() {
+        assertNotNull(emailView);
+    }
+
+
     public void testInvalidEmailAddress() throws InterruptedException {
-        final EditText emailView = mActivity.findViewById(R.id.emailEditView);
-        Button saveRegistrationButton = (Button) mActivity.findViewById(R.id.registerSaveButton);
 
-        Thread.sleep(10000);
-        saveRegistrationButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String email = emailView.getText().toString();
-                String ePattern = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
-                java.util.regex.Pattern p = java.util.regex.Pattern.compile(ePattern);
-                java.util.regex.Matcher m = p.matcher(email);
-                assertEquals(true,m.matches());
 
-            }
-        });
+        String email = emailView.getText().toString();
+        String ePattern = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
+        java.util.regex.Pattern p = java.util.regex.Pattern.compile(ePattern);
+        java.util.regex.Matcher m = p.matcher(email);
+        assertEquals(true,m.matches());
+
+        //Thread.sleep(10000);
+//        saveRegistrationButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                String email = emailView.getText().toString();
+//                String ePattern = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
+//                java.util.regex.Pattern p = java.util.regex.Pattern.compile(ePattern);
+//                java.util.regex.Matcher m = p.matcher(email);
+//                assertEquals(true,m.matches());
+//
+//            }
+//        });
     }
 
     @Test

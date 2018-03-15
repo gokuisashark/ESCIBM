@@ -15,7 +15,6 @@
         <activity android:name=".StartUpActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -23,7 +22,12 @@
         <activity android:name=".ViewAccountSummaryActivity" />
         <activity android:name=".EditDataActivity" />
         <activity android:name=".MakeTransactionActivity" />
-        <activity android:name=".RegisterActivity"></activity>
+        <activity
+            android:name=".CameraActivity"
+            android:parentActivityName=".RegisterActivity">
+        </activity>
+        <activity android:name=".RegisterActivity"
+            android:parentActivityName=".RegisterActivity"></activity>
     </application>
 
 </manifest>
