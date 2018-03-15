@@ -62,6 +62,7 @@ public class StartUpActivity extends AppCompatActivity {
         final String username = editTextUsername.getText().toString();
         final String password = editTextPassword.getText().toString();
         //validating inputs
+
         if (TextUtils.isEmpty(username)) {
             editTextUsername.setError("Please enter your username");
             editTextUsername.requestFocus();
@@ -79,71 +80,5 @@ public class StartUpActivity extends AppCompatActivity {
 
         UserLogin ul = new UserLogin();
         ul.execute(new String[]{username,password});
-    }
-    class UserLogin extends AsyncTask<String, Void, String> {
-
-        ProgressBar progressBar;
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-//            TODO: Set up the progress bar
-//            progressBar = (ProgressBar) findViewById(R.id.progressBar);
-//            progressBar.setVisibility(View.VISIBLE);
-        }
-
-        @Override
-        protected String doInBackground(String... loginInfo) {
-            //creating request handler object
-            RequestHandler requestHandler = new RequestHandler();
-            Log.i("username", loginInfo[0]);
-            Log.i("password", loginInfo[1]);
-
-            //creating request parameters
-            HashMap<String, String> params = new HashMap<>();
-            params.put("username", loginInfo[0]);
-            params.put("password", loginInfo[1]);
-            //returing the response
-            return requestHandler.sendPostRequest(URLs.URL_LOGIN, params);
-        }
-
-        @Override
-        protected void onPostExecute(String s) {
-            super.onPostExecute(s);
-//            progressBar.setVisibility(View.GONE);
-
-
-            try {
-                //converting response to json object
-                Log.i("Vincent",s);
-                JSONObject obj = new JSONObject(s);
-
-                //if no error in response
-                if (!obj.getBoolean("error")) {
-                    Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_SHORT).show();
-
-                    //getting the user from the response
-                    JSONObject userJson = obj.getJSONObject("user");
-
-                    //creating a new user object
-                    User user = new User(
-                            userJson.getString("username"),
-                            userJson.getString("email"),
-                            userJson.getString("gender")
-                    );
-
-                    //storing the user in shared preferences
-                    SharedPrefManager.getInstance(getApplicationContext()).userLogin(user);
-
-                    //starting the profile activity
-                    finish();
-                    startActivity(new Intent(getApplicationContext(), HomePageActivity.class));
-                } else {
-                    Toast.makeText(getApplicationContext(), "Invalid username or password", Toast.LENGTH_SHORT).show();
-                }
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        }
     }
 }
