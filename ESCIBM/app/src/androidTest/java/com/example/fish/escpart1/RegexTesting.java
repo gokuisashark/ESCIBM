@@ -15,6 +15,7 @@ public class RegexTesting {
         java.util.regex.Pattern p = java.util.regex.Pattern.compile(Pattern);
         java.util.regex.Matcher m = p.matcher("xueqing_li@mymail.sutd.edu.sg");
         assertEquals(true,m.matches());
+
     }
 
 }

@@ -63,7 +63,7 @@ public class InputChecker {
             Toast.makeText(context, "Password fields do not match", Toast.LENGTH_SHORT).show();
             return false;
         }
-        String ePattern = "^[a-zA-Z0-9]{8,}$";
+        String ePattern = "^(?![0-9]+$)(?![a-z]+$)[0-9a-z]{8,}$";
         java.util.regex.Pattern p = java.util.regex.Pattern.compile(ePattern);
         java.util.regex.Matcher m = p.matcher(password);
         if (!m.matches()){

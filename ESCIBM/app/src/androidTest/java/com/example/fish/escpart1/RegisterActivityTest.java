@@ -70,7 +70,7 @@ public class RegisterActivityTest extends ActivityInstrumentationTestCase2<Regis
         password = "123";
 
         // check whether password has a short length
-        String ePattern = "^[a-zA-Z0-9]{6,}$";
+        String ePattern = "^(?![0-9]+$)(?![a-z]+$)[0-9a-z]{8,}$";
         java.util.regex.Pattern p = java.util.regex.Pattern.compile(ePattern);
         java.util.regex.Matcher m = p.matcher(password);
         assertEquals(true,m.matches());
