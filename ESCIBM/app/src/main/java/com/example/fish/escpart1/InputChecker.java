@@ -50,7 +50,7 @@ public class InputChecker {
 
 
 
-    private boolean emailChecker(String email) {
+    protected boolean emailChecker(String email) {
         String ePattern =
                 "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
         java.util.regex.Pattern p = java.util.regex.Pattern.compile(ePattern);
@@ -58,7 +58,7 @@ public class InputChecker {
         return m.matches();
     }
 
-    private boolean passwordChecker(String password, String verifyPassword) {
+    protected boolean passwordChecker(String password, String verifyPassword) {
         if (!password.equals(verifyPassword)){
             Toast.makeText(context, "Password fields do not match", Toast.LENGTH_SHORT).show();
             return false;
@@ -72,21 +72,21 @@ public class InputChecker {
         return m.matches();
     }
 
-    private boolean nricChecker(String nric) {
+    protected boolean nricChecker(String nric) {
         String ePattern = "^[STFG]\\d{7}[A-Z]$";
         java.util.regex.Pattern p = java.util.regex.Pattern.compile(ePattern);
         java.util.regex.Matcher m = p.matcher(nric);
         return m.matches();
     }
 
-    private boolean postalCodeChecker(String postalCode) {
+    protected boolean postalCodeChecker(String postalCode) {
         String ePattern = "^[0-9]{6}$";
         java.util.regex.Pattern p = java.util.regex.Pattern.compile(ePattern);
         java.util.regex.Matcher m = p.matcher(postalCode);
         return m.matches();
     }
 
-    private boolean phoneNumberChecker(String phoneNumber) {
+    protected boolean phoneNumberChecker(String phoneNumber) {
         String ePattern = "^[0-9]{8}$";
         java.util.regex.Pattern p = java.util.regex.Pattern.compile(ePattern);
         java.util.regex.Matcher m = p.matcher(phoneNumber);
