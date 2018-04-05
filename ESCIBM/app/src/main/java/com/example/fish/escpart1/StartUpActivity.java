@@ -1,12 +1,16 @@
 package com.example.fish.escpart1;
 
 import android.Manifest;
+import android.app.KeyguardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.hardware.fingerprint.FingerprintManager;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.security.keystore.KeyGenParameterSpec;
+import android.security.keystore.KeyProperties;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -19,7 +23,21 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.security.InvalidAlgorithmParameterException;
+import java.security.InvalidKeyException;
+import java.security.KeyStore;
+import java.security.KeyStoreException;
+import java.security.NoSuchAlgorithmException;
+import java.security.NoSuchProviderException;
+import java.security.UnrecoverableKeyException;
+import java.security.cert.CertificateException;
 import java.util.HashMap;
+
+import javax.crypto.Cipher;
+import javax.crypto.KeyGenerator;
+import javax.crypto.NoSuchPaddingException;
+import javax.crypto.SecretKey;
 
 public class StartUpActivity extends AppCompatActivity {
 
@@ -33,6 +51,10 @@ public class StartUpActivity extends AppCompatActivity {
     private ImageView captcha_image;
     private EditText captcha_ans;
     private Text texttest;
+    private KeyStore keyStore;
+    private static final String KEY_NAME="qbb";
+    private Cipher cipher;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,17 +105,41 @@ public class StartUpActivity extends AppCompatActivity {
         if (!texttest.checkAnswer(captcha_ans.getText().toString().trim())) {
             captcha_ans.setError("Incorrect Captcha entry.");
         } else { //passed the check.
-            Requestpermissions();
-            openCamera();
+            KeyguardManager keyguardManager = (KeyguardManager)getSystemService(KEYGUARD_SERVICE);
+            FingerprintManager fingerprintManager = (FingerprintManager)getSystemService(FINGERPRINT_SERVICE);
+
+            if (ActivityCompat.checkSelfPermission(this, Manifest.permission.USE_FINGERPRINT) != PackageManager.PERMISSION_GRANTED){
+                return;
+            }
+
+
+            if (!fingerprintManager.isHardwareDetected())
+                Toast.makeText(this, "Fingerprint authentication permission not enable", Toast.LENGTH_SHORT).show();
+            else {
+                if (!fingerprintManager.hasEnrolledFingerprints())
+                    Toast.makeText(this, "Register at least one fingerprint in Settings", Toast.LENGTH_SHORT).show();
+                else {
+                    if (!keyguardManager.isKeyguardSecure())
+                        Toast.makeText(this, "Lock screen security not enabled in Settings", Toast.LENGTH_SHORT).show();
+                    else
+                        getKey();
+                    if (cipherInit()){
+                        Toast.makeText(this,"Put your finger on the fingerprint reader",Toast.LENGTH_LONG).show();
+                        FingerprintManager.CryptoObject cryptoObject = new FingerprintManager.CryptoObject(cipher);
+                        FingerprintHandler helper = new FingerprintHandler(this);
+                        helper.startAuthentication(fingerprintManager,cryptoObject);
+                    }
+                }
+            }
         }
     }
 
-    private void openCamera(){
+    public void openCamera(){
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         startActivityForResult(intent, this.CAMERA_REQUEST); // i placed a random number here because we don't care what results from it..
     }
 
-    private void Requestpermissions() {
+    public void Requestpermissions() {
         ActivityCompat.requestPermissions(this,
                 new String[]{Manifest.permission.CAMERA},
                 this.CAMERA_PERMISSION_REQUEST); //CAMERA_REQUEST is a request code. just to distinguish so that onActivityResult can distinguish
@@ -138,5 +184,80 @@ public class StartUpActivity extends AppCompatActivity {
             }
 
         }
+    }
+
+    private boolean cipherInit() {
+
+        try {
+            cipher = Cipher.getInstance(KeyProperties.KEY_ALGORITHM_AES+"/"+ KeyProperties.BLOCK_MODE_CBC+"/"+KeyProperties.ENCRYPTION_PADDING_PKCS7);
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (NoSuchPaddingException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            keyStore.load(null);
+            SecretKey key = (SecretKey)keyStore.getKey(KEY_NAME,null);
+            cipher.init(Cipher.ENCRYPT_MODE,key);
+            return true;
+        } catch (IOException e1) {
+            e1.printStackTrace();
+            return false;
+        } catch (NoSuchAlgorithmException e1) {
+            e1.printStackTrace();
+            return false;
+        } catch (CertificateException e1) {
+            e1.printStackTrace();
+            return false;
+        } catch (UnrecoverableKeyException e1) {
+            e1.printStackTrace();
+            return false;
+        } catch (KeyStoreException e1) {
+            e1.printStackTrace();
+            return false;
+        } catch (InvalidKeyException e1) {
+            e1.printStackTrace();
+            return false;
+        }
+
+    }
+
+    private void getKey(){
+        try {
+            keyStore = KeyStore.getInstance("AndroidKeyStore");
+        } catch (KeyStoreException e) {
+            e.printStackTrace();
+        }
+
+        KeyGenerator keyGenerator = null;
+
+        try {
+            keyGenerator = KeyGenerator.getInstance(KeyProperties.KEY_ALGORITHM_AES,"AndroidKeyStore");
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (NoSuchProviderException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            keyStore.load(null);
+            keyGenerator.init(new KeyGenParameterSpec.Builder(KEY_NAME,
+                    KeyProperties.PURPOSE_ENCRYPT | KeyProperties.PURPOSE_DECRYPT)
+                    .setBlockModes(KeyProperties.BLOCK_MODE_CBC)
+                    .setUserAuthenticationRequired(true)
+                    .setEncryptionPaddings(KeyProperties.ENCRYPTION_PADDING_PKCS7).build()
+            );
+            keyGenerator.generateKey();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (CertificateException e) {
+            e.printStackTrace();
+        } catch (InvalidAlgorithmParameterException e) {
+            e.printStackTrace();
+        }
+
     }
 }
