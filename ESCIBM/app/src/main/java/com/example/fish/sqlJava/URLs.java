@@ -10,5 +10,6 @@ public class URLs {
     private static final String ROOT_URL = "http://10.12.182.147/api4.php?apicall=";
     public static final String URL_REGISTER = ROOT_URL + "signup";
     public static final String URL_LOGIN= ROOT_URL + "login";
+    public static final String URL_TRANSACTION = ROOT_URL + "transaction";
 
 }

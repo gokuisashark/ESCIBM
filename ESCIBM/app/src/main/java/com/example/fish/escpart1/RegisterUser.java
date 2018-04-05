@@ -61,8 +61,8 @@ class RegisterUser extends AsyncTask<HashMap<String,String>, Void, String> {
 
         try {
             //converting response to json object
-            JSONObject obj = new JSONObject(s);
             Log.i("Register",s);
+            JSONObject obj = new JSONObject(s);
             System.out.println(obj);
             //if no error in response
             if (!obj.getBoolean("error")) {

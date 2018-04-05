@@ -50,7 +50,7 @@ public class CameraActivity extends AppCompatActivity {
                 params.put("face", encodedImage);
                 RegisterUser ru = new RegisterUser(getApplicationContext());
                 for (String i: params.keySet()) {
-                    System.out.println(i + params.get(i));
+                    System.out.println(i + ": " + params.get(i));
                 }
                 ru.execute(params);
             }
