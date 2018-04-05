@@ -15,6 +15,7 @@ import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
@@ -29,18 +30,21 @@ public class StartUpActivity extends AppCompatActivity {
     private int CAMERA_REQUEST =432; //integer to tell you what activity was run. Use different codes for different parts! i.e. later when you upload your images.
     private int CAMERA_PERMISSION_REQUEST = 5050; //integer to tell me i did a permissions activity for the camera
     private String username, password, encodedImage;
-
+    private ImageView captcha_image;
+    private EditText captcha_ans;
+    private Text texttest;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start_up);
-
+        captcha_image = (ImageView) findViewById(R.id.textimage);
+        captcha_ans = (EditText) findViewById(R.id.textans) ;
         loginbutton = (Button) findViewById(R.id.loginbutton);
         registerbutton = (Button) findViewById(R.id.registerbutton);
         editTextUsername = findViewById(R.id.loginusereditview);
         editTextPassword = findViewById(R.id.passwordeditview);
-
-
+        texttest = new Text(600, 150, 4, Text.TextOptions.UPPERCASE_ONLY);
+        captcha_image.setImageBitmap(texttest.getImage());
         loginbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -76,8 +80,12 @@ public class StartUpActivity extends AppCompatActivity {
             editTextPassword.requestFocus();
             return;
         }
-        Requestpermissions();
-        openCamera();
+        if (!texttest.checkAnswer(captcha_ans.getText().toString().trim())) {
+            captcha_ans.setError("Incorrect Captcha entry.");
+        } else { //passed the check.
+            Requestpermissions();
+            openCamera();
+        }
     }
 
     private void openCamera(){

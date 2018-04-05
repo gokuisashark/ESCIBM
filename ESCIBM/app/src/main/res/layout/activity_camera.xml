@@ -25,6 +25,16 @@
         android:layout_marginTop="16dp"
         android:layout_centerHorizontal="true"
         />
+    <ImageView
+        android:id="@+id/textimage_camera_activity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <EditText
+        android:id = "@+id/textans_camera_activity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/textAnsHint"
+        />
     <Button
         android:id="@+id/registerButtonCamera"
         android:layout_width="wrap_content"

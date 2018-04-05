@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -26,14 +27,21 @@ public class CameraActivity extends AppCompatActivity {
     private HashMap<String,String> params;
     private Button registerButton, takePictureButton;
     private String encodedImage;
+    private ImageView captcha_image;
+    private EditText captcha_ans;
+    private Text captcha_item;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_camera);
+        captcha_image = (ImageView) findViewById(R.id.textimage_camera_activity);
+        captcha_ans = (EditText) findViewById(R.id.textans_camera_activity) ;
         imageTaken = (ImageView) findViewById(R.id.imagePlaceholderCamera); //the image to show picture taken.
         params = (HashMap<String, String>) getIntent().getSerializableExtra("params");
-
+        captcha_item = new Text(600, 150, 4, Text.TextOptions.UPPERCASE_ONLY);
         Requestpermissions(); //TODO:Need to always request permission?
+
+        //TODO: No you don't always need to. My method should automatically check if permissions have been granted. no guarantees though.
 
         takePictureButton = findViewById(R.id.takePictureButtonCamera);
         takePictureButton.setOnClickListener(new View.OnClickListener(){
@@ -47,12 +55,18 @@ public class CameraActivity extends AppCompatActivity {
 
             @SuppressWarnings("unchecked")
             public void onClick(View view) {
-                params.put("face", encodedImage);
-                RegisterUser ru = new RegisterUser(getApplicationContext());
-                for (String i: params.keySet()) {
-                    System.out.println(i + ": " + params.get(i));
+                if (!captcha_item.checkAnswer(captcha_ans.getText().toString().trim())) {
+                    captcha_ans.setError("Incorrect Captcha entry.");
+                } else { //passed captcha test.
+                    params.put("face", encodedImage);
+                    RegisterUser ru = new RegisterUser(getApplicationContext());
+                    for (String i: params.keySet()) {
+                        System.out.println(i + ": " + params.get(i));
+                    }
+                    ru.execute(params);
+
                 }
-                ru.execute(params);
+
             }
         });
 

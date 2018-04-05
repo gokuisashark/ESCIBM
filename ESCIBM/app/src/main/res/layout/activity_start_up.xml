@@ -70,6 +70,16 @@
         android:layout_marginTop="20dp"
         android:layout_below="@+id/loginusereditview"
         android:ems="16"/>
+    <ImageView
+        android:id="@+id/textimage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <EditText
+        android:id = "@+id/textans"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/textAnsHint"
+        />
 
     <Button
         android:id="@+id/loginbutton"
