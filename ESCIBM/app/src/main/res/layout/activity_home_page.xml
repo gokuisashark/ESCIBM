@@ -1,62 +1,220 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:weightSum="10"
+    android:orientation="vertical"
     tools:context="com.example.fish.escpart1.HomePageActivity">
 
-    <Button
-        android:id="@+id/viewaccountbutton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="View Account Summary"
-        android:layout_centerHorizontal="true"
-        android:ems="16"
-        android:layout_marginTop="100dp"/>
 
-    <Button
-        android:id="@+id/maketransactionbutton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Make A Transaction"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/viewaccountbutton"
-        android:ems="16"
-        android:layout_marginTop="8dp"/>
+    <RelativeLayout
+        android:id="@+id/relativelayout"
+        android:layout_weight="4"
+        android:background="@color/colorMainGreen"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
 
-    <Button
-        android:id="@+id/opencamerabutton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Open Front Camera"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/maketransactionbutton"
-        android:ems="16"
-        android:layout_marginTop="8dp"/>
+        <TextView
+            android:id="@+id/headertext"
+            android:text="Welcome, First Name, Last Name."
+            android:textColor="@android:color/black"
+            android:textSize="24sp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
-    <Button
-        android:id="@+id/editdatabutton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Edit Your Personal Details"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/opencamerabutton"
-        android:ems="16"
-        android:layout_marginTop="8dp"/>
+    </RelativeLayout>
 
-    <Button
-        android:id="@+id/logoutbutton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Logout"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/editdatabutton"
-        android:ems="16"
-        android:layout_marginTop="8dp"/>
-    
+    <GridLayout
+        android:id="@+id/mainGrid"
+        android:columnCount="2"
+        android:rowCount="2"
+        android:alignmentMode="alignMargins"
+        android:columnOrderPreserved="false"
+        android:layout_weight="6"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:padding="14dp"
+        >
+
+        <!-- Row 1 -->
+        <!-- Column 1 -->
+        <!-- CardView dependencies are needed -->
+        <!-- columnWeight and rowWeight needs API 21 above -->
+
+        <!-- Column 1 -->
+        <android.support.v7.widget.CardView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="16dp"
+            app:cardElevation="4dp"
+            app:cardCornerRadius="8dp"
+            >
+
+            <LinearLayout
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_margin="16dp"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/personaldataimage"
+                    android:src="@drawable/person_64_black"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:scaleType="fitXY"/>
+
+                <TextView
+                    android:id="@+id/personaltext"
+                    android:text="Account Summary"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
 
 
+        </android.support.v7.widget.CardView>
+
+        <!-- Column 2 -->
+        <android.support.v7.widget.CardView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="16dp"
+            app:cardElevation="4dp"
+            app:cardCornerRadius="8dp"
+            >
+
+            <LinearLayout
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_margin="16dp"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/editdataimage"
+                    android:src="@drawable/editdata_64_black"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:scaleType="fitXY"/>
+
+                <TextView
+                    android:id="@+id/editdatatext"
+                    android:text="Edit Data"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
 
 
-</RelativeLayout>
+        </android.support.v7.widget.CardView>
+
+        <!-- Row 2, Column 1 -->
+        <android.support.v7.widget.CardView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="16dp"
+            app:cardElevation="4dp"
+            app:cardCornerRadius="8dp"
+            >
+
+            <LinearLayout
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_margin="16dp"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/transactionsimage"
+                    android:src="@drawable/transaction_64_black"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:scaleType="fitXY"/>
+
+                <TextView
+                    android:id="@+id/transactionstext"
+                    android:text="Transactions"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+
+        </android.support.v7.widget.CardView>
+
+        <!-- Row 2, Column 2 -->
+        <android.support.v7.widget.CardView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="16dp"
+            app:cardElevation="4dp"
+            app:cardCornerRadius="8dp"
+            >
+
+            <LinearLayout
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_margin="16dp"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/logoutimage"
+                    android:src="@drawable/logout_64_black"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:scaleType="fitXY"/>
+
+                <TextView
+                    android:id="@+id/logouttext"
+                    android:text="Logout"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+
+        </android.support.v7.widget.CardView>
+
+
+    </GridLayout>
+
+
+</LinearLayout>

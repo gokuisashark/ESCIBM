@@ -1,117 +1,153 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context="com.example.fish.escpart1.StartUpActivity">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/startupgreenwhitebackground"
+    tools:context="com.example.fish.escpart1.StartUpActivity">
 
-        <ImageView
-            android:id="@+id/sutdlogo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/ibmlogo"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginLeft="45dp"
-            android:layout_marginStart="45dp"
-            android:layout_marginTop="150dp"
-            android:adjustViewBounds="true"
-            android:maxHeight="100dp"
-            android:maxWidth="150dp"
-            android:scaleType="fitCenter"
-            android:src="@mipmap/sutd_logo_512x" />
+    <ImageView
+        android:id="@+id/sutdlogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/sutdlogo"
+        android:adjustViewBounds="true"
+        android:maxHeight="100dp"
+        android:maxWidth="150dp"
+        android:scaleType="fitCenter"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"/>
 
+    <ImageView
+        android:id="@+id/ibmlogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ibmlogo"
+        android:adjustViewBounds="true"
+        android:maxHeight="100dp"
+        android:maxWidth="150dp"
+        android:scaleType="fitCenter"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="24dp"/>
 
-        <ImageView
-            android:id="@+id/ibmlogo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginEnd="45dp"
-            android:layout_marginRight="45dp"
-            android:layout_marginTop="150dp"
-            android:adjustViewBounds="true"
-            android:maxHeight="60dp"
-            android:maxWidth="150dp"
-            android:scaleType="fitCenter"
-            android:src="@mipmap/ibm_logo" />
+    <TextView
+        android:id="@+id/remotekyctext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Remote KYC"
+        android:textStyle="normal"
+        android:textSize="32sp"
+        android:textColor="@color/colorBlack"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/sutdlogo"
+        android:layout_marginTop="16dp"/>
 
-        <TextView
-            android:id="@+id/remotekyctext"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Remote KYC"
-            android:textSize="14pt"
-            android:textStyle="bold"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@+id/sutdlogo"
-            android:layout_marginTop="20dp"/>
+    <Space
+        android:id="@+id/midspace"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"/>
 
-        <EditText
-            android:id="@+id/loginusereditview"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:hint="Registered username or email"
-            android:layout_marginTop="20dp"
-            android:layout_below="@+id/remotekyctext"
-            android:ems="16"/>
+    <!--<EditText-->
+    <!--android:id="@+id/useredittext"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:hint="Registered username or email"-->
+    <!--android:padding="2dp"-->
+    <!--android:layout_centerHorizontal="true"-->
+    <!--android:layout_below="@+id/midspace"-->
+    <!--android:layout_marginTop="55dp"-->
+    <!--android:ems="16"-->
+    <!--android:background="@drawable/edittextbackground"/>-->
 
-        <EditText
-            android:id="@+id/passwordeditview"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:hint="Password"
-            android:inputType="textPassword"
-            android:layout_marginTop="20dp"
-            android:layout_below="@+id/loginusereditview"
-            android:ems="16"/>
-        <ImageView
-            android:id="@+id/textimage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="20dp"
-            android:layout_below="@id/passwordeditview"/>
-        <EditText
-            android:id = "@+id/textans"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:hint="@string/textAnsHint"
-            android:layout_below="@id/textimage"
-            android:layout_marginTop="20dp"
-            android:ems="16"/>
+    <TextView
+        android:id="@+id/useridtext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="User ID:"
+        android:textStyle="bold"
+        android:textSize="28sp"
+        android:textColor="@color/colorBlack"
+        android:layout_below="@id/remotekyctext"
+        android:layout_marginTop="32dp"
+        android:layout_marginLeft="32dp"/>
 
-        <Button
-            android:id="@+id/loginbutton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Login"
-            android:layout_below="@+id/textans"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="12dp"
-            android:ems="16"/>
+    <EditText
+        android:id="@+id/useredittext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint=" Enter here"
+        android:textSize="28sp"
+        android:background="@drawable/edittextbackground"
+        android:layout_toRightOf="@+id/useridtext"
+        android:layout_alignBaseline="@+id/useridtext"
+        android:layout_marginLeft="12dp"
+        android:ems="6"/>
 
+    <TextView
+        android:id="@+id/pintext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="PIN:"
+        android:textStyle="bold"
+        android:textSize="28sp"
+        android:textColor="@color/colorBlack"
+        android:layout_below="@+id/useridtext"
+        android:layout_alignLeft="@+id/useridtext"
+        android:layout_marginTop="16dp"/>
 
-        <Button
-            android:id="@+id/registerbutton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Register"
-            android:layout_below="@+id/loginbutton"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="8dp"
-            android:ems="16" />
+    <EditText
+        android:id="@+id/pinedittext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint=" Enter here"
+        android:inputType="textPassword"
+        android:textSize="28sp"
+        android:background="@drawable/edittextbackground"
+        android:layout_below="@+id/useredittext"
+        android:layout_alignLeft="@+id/useredittext"
+        android:layout_alignBaseline="@+id/pintext"
+        android:ems="6"/>
 
+    <ImageView
+        android:id="@+id/captchaImage"
+        android:layout_width="240dp"
+        android:layout_height="96dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="64dp"
+        android:layout_below="@id/pinedittext"/>
+    <EditText
+        android:id = "@+id/captchaAns"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:hint="@string/textAnsHint"
+        android:layout_below="@id/captchaImage"
+        android:layout_marginTop="8dp"
+        android:ems="16"/>
 
+    <Button
+        android:id="@+id/loginbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/captchaAns"
+        android:layout_marginTop="8dp"
+        android:ems="12"/>
 
-    </RelativeLayout>
-</ScrollView>
+    <Button
+        android:id="@+id/registerbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Register"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/loginbutton"
+        android:layout_marginTop="10dp"
+        android:ems="12"/>
+
+</RelativeLayout>

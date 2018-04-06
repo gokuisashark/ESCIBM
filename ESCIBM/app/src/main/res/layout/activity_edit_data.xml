@@ -1,9 +1,379 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.fish.escpart1.EditDataActivity">
+    android:background="@color/colorWhite"
+    tools:context="com.example.fish.escibmuimain.EditDataActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <RelativeLayout
+        android:id="@+id/relayout1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/colorspace"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:background="@color/colorMainGreen"/>
+
+        <ImageButton
+            android:id="@+id/homebutton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/home_64_black"
+            android:scaleType="fitXY"
+            android:background="?android:selectableItemBackground"
+            android:layout_margin="12dp"/>
+
+        <TextView
+            android:id="@+id/editdataheadertext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Edit Data"
+            android:textSize="24sp"
+            android:textColor="@color/colorBlack"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="14dp"/>
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_marginTop="72dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/designationText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Designation: "
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="20dp"/>
+
+            <Spinner
+                android:id="@+id/designationSpinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/designationText"
+                android:layout_alignBottom="@+id/designationText"/>
+
+            <TextView
+                android:id="@+id/genderText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Gender: "
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_toRightOf="@id/designationSpinner"
+                android:layout_marginLeft="8dp"
+                android:layout_alignBottom="@id/designationSpinner"/>
+
+            <Spinner
+                android:id="@+id/genderSpinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/genderText"
+                android:layout_alignBottom="@+id/genderText" />
+
+            <TextView
+                android:id="@+id/firstNameText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="First Name: "
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:layout_below="@+id/designationText"
+                android:layout_alignLeft="@+id/designationText"
+                android:layout_marginTop="16dp"/>
+
+            <EditText
+                android:id="@+id/firstNameEditView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint=" First name here"
+                android:textSize="20sp"
+                android:background="@drawable/edittextbackground"
+                android:layout_below="@+id/firstNameText"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"/>
+
+            <TextView
+                android:id="@+id/lastNameText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Last Name: "
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:layout_below="@+id/firstNameEditView"
+                android:layout_alignLeft="@id/firstNameEditView"
+                android:layout_marginTop="16dp"/>
+
+            <EditText
+                android:id="@+id/lastNameEditView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint=" Last name here"
+                android:textSize="20sp"
+                android:background="@drawable/edittextbackground"
+                android:layout_below="@id/lastNameText"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"/>
+
+            <TextView
+                android:id="@+id/nricfinText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="NRIC/FIN Number: "
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:layout_below="@id/lastNameEditView"
+                android:layout_alignLeft="@id/lastNameEditView"
+                android:layout_marginTop="16dp" />
+
+            <EditText
+                android:id="@+id/nricfinEditView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint=" NRIC/FIN"
+                android:textSize="20sp"
+                android:background="@drawable/edittextbackground"
+                android:layout_below="@id/nricfinText"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"/>
+
+            <TextView
+                android:id="@+id/dobText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Date of Birth: "
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:layout_below="@id/nricfinEditView"
+                android:layout_alignLeft="@id/nricfinEditView"
+                android:layout_marginTop="16dp" />
+
+            <EditText
+                android:id="@+id/dobEditView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint=" Date of Birth"
+                android:inputType="date"
+                android:textSize="20sp"
+                android:background="@drawable/edittextbackground"
+                android:layout_toRightOf="@+id/dobText"
+                android:layout_alignBaseline="@+id/dobText"
+                android:layout_marginRight="20dp"/>
+
+            <TextView
+                android:id="@+id/nationalityText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nationality: "
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:layout_below="@id/dobText"
+                android:layout_alignLeft="@id/dobText"
+                android:layout_marginTop="16dp" />
+
+            <EditText
+                android:id="@+id/nationalityEditView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint=" Nationality"
+                android:textSize="20sp"
+                android:background="@drawable/edittextbackground"
+                android:layout_toRightOf="@id/nationalityText"
+                android:layout_alignBaseline="@id/nationalityText"
+                android:layout_marginRight="20dp"/>
+
+            <TextView
+                android:id="@+id/homeAddressText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Home Address: "
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:layout_below="@id/nationalityText"
+                android:layout_alignLeft="@id/nationalityText"
+                android:layout_marginTop="16dp" />
+
+            <EditText
+                android:id="@+id/homeAddressEditView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint=" Home Address"
+                android:textSize="20sp"
+                android:background="@drawable/edittextbackground"
+                android:inputType="textMultiLine"
+                android:minLines="1"
+                android:lines="2"
+                android:layout_below="@+id/homeAddressText"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"/>
+
+            <TextView
+                android:id="@+id/postalCodeText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Postal Code: "
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:layout_below="@id/homeAddressEditView"
+                android:layout_alignLeft="@id/homeAddressEditView"
+                android:layout_marginTop="16dp" />
+
+            <EditText
+                android:id="@+id/postalCodeEditView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint=" Postal Code"
+                android:inputType="number"
+                android:textSize="20sp"
+                android:background="@drawable/edittextbackground"
+                android:layout_toRightOf="@id/postalCodeText"
+                android:layout_alignBaseline="@id/postalCodeText"
+                android:layout_marginRight="20dp"/>
+
+            <TextView
+                android:id="@+id/contactNumberText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Contact Number: "
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:layout_below="@id/postalCodeText"
+                android:layout_alignLeft="@id/postalCodeText"
+                android:layout_marginTop="16dp" />
+
+            <EditText
+                android:id="@+id/contactNumberEditView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint=" Phone Number"
+                android:inputType="phone"
+                android:textSize="20sp"
+                android:background="@drawable/edittextbackground"
+                android:layout_toRightOf="@id/contactNumberText"
+                android:layout_alignBaseline="@id/contactNumberText"
+                android:layout_marginRight="20dp"/>
+
+            <TextView
+                android:id="@+id/emailText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Email: "
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_below="@id/contactNumberText"
+                android:layout_alignLeft="@id/contactNumberText"
+                android:layout_marginTop="16dp" />
+
+            <EditText
+                android:id="@+id/emailEditView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                android:hint=" Personal email"
+                android:textSize="20sp"
+                android:background="@drawable/edittextbackground"
+                android:layout_below="@+id/emailText"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"/>
+
+
+            <TextView
+                android:id="@+id/usernameText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Verify Username: "
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_below="@id/emailEditView"
+                android:layout_alignLeft="@id/emailEditView"
+                android:layout_marginTop="16dp" />
+
+            <EditText
+                android:id="@+id/usernameEditView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint=" Enter Desired Username"
+                android:textSize="20sp"
+                android:background="@drawable/edittextbackground"
+                android:layout_below="@id/usernameText"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"/>
+
+            <TextView
+                android:id="@+id/verifyPasswordText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Verify Password: "
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:layout_below="@id/usernameEditView"
+                android:layout_alignLeft="@id/usernameEditView"
+                android:layout_marginTop="16dp" />
+
+            <EditText
+                android:id="@+id/verifyPasswordEditView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint=" Verify Password"
+                android:inputType="textPassword"
+                android:textSize="20sp"
+                android:background="@drawable/edittextbackground"
+                android:layout_below="@id/verifyPasswordText"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"/>
+
+            <Button
+                android:id="@+id/cameraButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Camera"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:layout_below="@id/verifyPasswordEditView"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:padding="8dp"
+                android:ems="12"/>
+
+            <Button
+                android:id="@+id/saveediteddataButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Save Edited Data"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:layout_below="@id/cameraButton"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="20dp"
+                android:padding="8dp"
+                android:ems="12"/>
+
+
+        </RelativeLayout>
+
+
+    </ScrollView>
+
+</RelativeLayout>

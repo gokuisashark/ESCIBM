@@ -30,15 +30,18 @@ public class CameraActivity extends AppCompatActivity {
     private ImageView captcha_image;
     private EditText captcha_ans;
     private Text captcha_item;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_camera);
         captcha_image = (ImageView) findViewById(R.id.textimage_camera_activity);
         captcha_ans = (EditText) findViewById(R.id.textans_camera_activity) ;
+
         imageTaken = (ImageView) findViewById(R.id.imagePlaceholderCamera); //the image to show picture taken.
         params = (HashMap<String, String>) getIntent().getSerializableExtra("params");
         captcha_item = new Text(600, 150, 4, Text.TextOptions.UPPERCASE_ONLY);
+        captcha_image.setImageBitmap(captcha_item.getImage());
         Requestpermissions(); //TODO:Need to always request permission?
 
         //TODO: No you don't always need to. My method should automatically check if permissions have been granted. no guarantees though.

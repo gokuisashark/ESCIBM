@@ -22,7 +22,7 @@ public class HomePageActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_landing_page);
+        setContentView(R.layout.activity_home_page);
         mainGrid = (GridLayout) findViewById(R.id.mainGrid);
         welcome = findViewById(R.id.headertext);
 

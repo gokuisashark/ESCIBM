@@ -1,20 +1,11 @@
 package com.example.fish.escpart1;
 
-import android.support.test.rule.ActivityTestRule;
 import android.test.ActivityInstrumentationTestCase2;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Rule;
 import org.junit.Test;
-
-import static junit.framework.Assert.assertEquals;
-import static org.junit.Assert.*;
 
 /**
  * Created by Li Xueqing on 15/3/2018.
@@ -57,7 +48,7 @@ public class RegisterActivityTest extends ActivityInstrumentationTestCase2<Regis
 
     @Test
     public void testPasswordLength() {
-        final EditText passwordView = mActivity.findViewById(R.id.passwordeditview);
+        final EditText passwordView = mActivity.findViewById(R.id.pinedittext);
 
         // set password in short length
         // password minimum length is 6
@@ -78,7 +69,7 @@ public class RegisterActivityTest extends ActivityInstrumentationTestCase2<Regis
 
     @Test
     public void testWrongPasswordFormat() {
-        final EditText passwordView = mActivity.findViewById(R.id.passwordeditview);
+        final EditText passwordView = mActivity.findViewById(R.id.pinedittext);
         final EditText verifyPasswordView = mActivity.findViewById(R.id.verifyPasswordEditView);
 
         // set password in wrong format

@@ -59,12 +59,12 @@ public class StartUpActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start_up);
-        captcha_image = (ImageView) findViewById(R.id.textimage);
-        captcha_ans = (EditText) findViewById(R.id.textans) ;
+        captcha_image = (ImageView) findViewById(R.id.captchaImage);
+        captcha_ans = (EditText) findViewById(R.id.captchaAns) ;
         loginbutton = (Button) findViewById(R.id.loginbutton);
         registerbutton = (Button) findViewById(R.id.registerbutton);
-        editTextUsername = findViewById(R.id.loginusereditview);
-        editTextPassword = findViewById(R.id.passwordeditview);
+        editTextUsername = findViewById(R.id.useredittext);
+        editTextPassword = findViewById(R.id.pinedittext);
         texttest = new Text(600, 150, 4, Text.TextOptions.UPPERCASE_ONLY);
         captcha_image.setImageBitmap(texttest.getImage());
         loginbutton.setOnClickListener(new View.OnClickListener() {
@@ -154,6 +154,7 @@ public class StartUpActivity extends AppCompatActivity {
     public void onActivityResult(int requestCode, int resultCode, Intent data){
         //STACK WITH YOUR OTHER IMAGE SELECTS, ETC.
         if(requestCode == this.CAMERA_REQUEST){ // i.e the request code was that of the camera...
+            //TODO: fix bug when user press back after going to camera
             Bitmap item = (Bitmap) data.getExtras().get("data"); //so i make it a bitmap
             ByteArrayOutputStream bytes = new ByteArrayOutputStream(); //need this.
             item.compress(Bitmap.CompressFormat.JPEG, 100, bytes); //into bytes.
